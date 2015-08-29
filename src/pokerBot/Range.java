@@ -214,6 +214,12 @@ public class Range {
 		
 		//TODO
 		
+		//setup available cards and such
+		
+		//random sample from remaining cards looped
+		
+		//calc % win and return
+		
 		return 0;
 	}
 	
