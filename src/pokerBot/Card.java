@@ -38,7 +38,9 @@ public class Card implements Comparable<Card> {
 			suitValue = 4;
 		
 		//load picture
-		try{pic = new JLabel(new ImageIcon(ImageIO.read(new File("images/cards/"+(num)+".png"))));}catch(Exception e){}
+		try{
+			pic = new JLabel(new ImageIcon(ImageIO.read(new File("images/cards/"+(num)+".png"))));
+		}catch(Exception ignore){}
 	}
 	
 	public int getNum(){
@@ -90,7 +92,7 @@ public class Card implements Comparable<Card> {
 			return 0;
 	}
 	
-	/*
+	/**
 	 * @override(non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

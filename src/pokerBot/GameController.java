@@ -10,9 +10,9 @@ public class GameController implements Runnable {
 
 	public final int id = 1;
 	
-	private static int numPlayers = 4;
+	private static int numPlayers = 6;
 	private ArrayList<Player> players = new ArrayList<Player>(numPlayers);
-	int defaultStackSize = 1000;
+	int defaultStackSize = 200;
 	
 	boolean endGameRequested = false;
 	
