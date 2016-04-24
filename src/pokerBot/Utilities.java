@@ -1,6 +1,7 @@
 package pokerBot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Utilities {
 	
@@ -42,6 +43,53 @@ public class Utilities {
 		//append both lists and return
 		tmp1.addAll(tmp2);
 		return tmp1;
+	}
+	
+	/**
+	 * checks if an element is contained in an array. linear time lookup. should avoid excessive use.
+	 * @param haystack
+	 * @param needle
+	 * @return
+	 */
+	public static <T> boolean contains(T[] haystack, T needle){
+		if(haystack == null)
+			return false;
+		if(needle == null){
+			for(T e: haystack){
+				if(e == null){
+					return true;
+				}
+			}
+		}else{
+			for(T e: haystack){
+				if(e == needle || e.equals(needle)){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public static <T extends Comparable> boolean sortedContains(T[] haystack, T needle){
+		return ( Arrays.binarySearch(haystack, needle) < 0 );
+	}
+	
+	public static <T> int[] getIndices(T[] a){
+		if(a == null)
+			return null;
+		
+		int[] toRet = new int[a.length];
+		for(int i = 0; i < a.length; i++){
+			toRet[i] = i;
+		}
+		return toRet;
+	}
+	
+	public static <T> void printArray(T[] a){
+		for(T e: a){
+			System.out.print(e + ", ");
+		}
+		System.out.println();
 	}
 
 }

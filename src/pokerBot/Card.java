@@ -43,6 +43,10 @@ public class Card implements Comparable<Card> {
 		}catch(Exception ignore){}
 	}
 	
+	/**
+	 * 
+	 * @return the card number for the card (1 to 52)
+	 */
 	public int getNum(){
 		return cardNum;
 	}
@@ -92,6 +96,10 @@ public class Card implements Comparable<Card> {
 			return 0;
 	}
 	
+//	public int compareTo(Card card2){
+//		return cardNum - card2.cardNum;
+//	}
+	
 	/**
 	 * @override(non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -107,4 +115,5 @@ public class Card implements Comparable<Card> {
 	public boolean equals(Card card2){
 		return (cardNum == card2.cardNum);
 	}
+	
 }

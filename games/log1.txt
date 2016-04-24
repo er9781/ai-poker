@@ -1,4 +1,1 @@
-- You won pot of 6
-- Player 2 won pot of 56
-- Player 2 won pot of 7 with Two Pair 9's and 3's with a kicker
-- Player 2 won pot of 6 with Two Pair a's and k's with t kicker
+- Player 3 won pot of 237

@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 
 public class Player {
 	
+	//Game state
 	GameController game;
 	
 	int stack;

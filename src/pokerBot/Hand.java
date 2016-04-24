@@ -1,6 +1,7 @@
 package pokerBot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class Hand implements Comparable<Hand>{
@@ -328,6 +329,11 @@ public class Hand implements Comparable<Hand>{
 		
 		//get max and return it
 		return Collections.max(allHands);
+	}
+	public static Hand bestHand(Card[] cards){
+		ArrayList<Card> cs = new ArrayList<Card>(cards.length);
+		cs.addAll(Arrays.asList(cards));
+		return bestHand(cs);
 	}
 
 	public int compareTo(Hand hand2) {

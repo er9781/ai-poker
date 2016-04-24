@@ -2,6 +2,8 @@ package pokerBot;
 
 import java.util.ArrayList;
 
+import equityCalculations.EquityBreakdown;
+
 /**
  * This is a data structure to represent an opponent's range. It is a fixed length double array which has 
  * a function to convert a pair of cards into an index. This simply gives access by using cards as an index.
@@ -202,26 +204,7 @@ public class Range {
 		return winsP1*1.0/(winsP1+winsP2);
 	}
 	
-	/**
-	 * 
-	 * @param wholeCards1
-	 * @param wholeCards2
-	 * @param board
-	 * @param numBoardsToTry
-	 * @return
-	 */
-	public static double calculateEquityBySimulation(Card[] wholeCards1, Card[] wholeCards2, ArrayList<Card> board, int numBoardsToTry){
-		
-		//TODO
-		
-		//setup available cards and such
-		
-		//random sample from remaining cards looped
-		
-		//calc % win and return
-		
-		return 0;
-	}
+
 	
 	public static Card[] indexToCards(int i){
 		if(i<0 || i>= 1326)
