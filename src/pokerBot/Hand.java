@@ -93,7 +93,7 @@ public class Hand implements Comparable<Hand>{
 				return;
 			}else{
 				rank = baseRank + cards.get(0).getNumberValue() - 2;
-				classification = "Straight Flush "+cards.get(0).getName().charAt(0)+" High";
+				classification = "Straight Flush "+cards.get(0).toString().charAt(0)+" High";
 				return;
 			}
 		}
@@ -113,7 +113,7 @@ public class Hand implements Comparable<Hand>{
 				tmpRank += quadNum*13;
 				tmpRank += cards.get(4).getNumberValue();
 				rank = tmpRank;
-				classification = "Quad "+cards.get(1).getName().charAt(0)+"'s with "+cards.get(4).getName().charAt(0)+" kicker";
+				classification = "Quad "+cards.get(1).toString().charAt(0)+"'s with "+cards.get(4).toString().charAt(0)+" kicker";
 				return;
 			}
 			if( quadNum == cards.get(2).getNumberValue()
@@ -123,7 +123,7 @@ public class Hand implements Comparable<Hand>{
 				tmpRank += quadNum*13;
 				tmpRank += cards.get(0).getNumberValue();
 				rank = tmpRank;
-				classification = "Quad "+cards.get(1).getName().charAt(0)+"'s with "+cards.get(0).getName().charAt(0)+" kicker";
+				classification = "Quad "+cards.get(1).toString().charAt(0)+"'s with "+cards.get(0).toString().charAt(0)+" kicker";
 				return;
 			}
 			
@@ -137,14 +137,14 @@ public class Hand implements Comparable<Hand>{
 				tmpRank += tripNum*13;
 				tmpRank += cards.get(4).getNumberValue();
 				rank = tmpRank;
-				classification = "Full house "+cards.get(2).getName().charAt(0)+"'s and "+cards.get(4).getName().charAt(0)+"'s";
+				classification = "Full house "+cards.get(2).toString().charAt(0)+"'s and "+cards.get(4).toString().charAt(0)+"'s";
 				return;
 			}else{
 				//must be full house pair first and trips second
 				tmpRank += tripNum*13;
 				tmpRank += cards.get(0).getNumberValue();
 				rank = tmpRank;
-				classification = "Full house "+cards.get(2).getName().charAt(0)+"'s and "+cards.get(0).getName().charAt(0)+"'s";
+				classification = "Full house "+cards.get(2).toString().charAt(0)+"'s and "+cards.get(0).toString().charAt(0)+"'s";
 				return;
 			}
 		}
@@ -159,11 +159,11 @@ public class Hand implements Comparable<Hand>{
 					Math.pow(2,cards.get(3).getNumberValue()) +
 					Math.pow(2,cards.get(4).getNumberValue()) );
 			classification = "Flush "
-					+cards.get(0).getName().charAt(0) + "-"
-					+cards.get(1).getName().charAt(0) + "-"
-					+cards.get(2).getName().charAt(0) + "-"
-					+cards.get(3).getName().charAt(0) + "-"
-					+cards.get(4).getName().charAt(0) ;
+					+cards.get(0).toString().charAt(0) + "-"
+					+cards.get(1).toString().charAt(0) + "-"
+					+cards.get(2).toString().charAt(0) + "-"
+					+cards.get(3).toString().charAt(0) + "-"
+					+cards.get(4).toString().charAt(0) ;
 			return;
 		}
 		
@@ -176,7 +176,7 @@ public class Hand implements Comparable<Hand>{
 				return;
 			}else{
 				rank = baseRank + cards.get(0).getNumberValue() - 2;
-				classification = "Straight "+cards.get(0).getName().charAt(0)+" High";
+				classification = "Straight "+cards.get(0).toString().charAt(0)+" High";
 				return;
 			}
 		}
@@ -194,8 +194,8 @@ public class Hand implements Comparable<Hand>{
 						+ tripsNum * 13*13
 						+ cards.get(3).getNumberValue() * 13
 						+ cards.get(4).getNumberValue() ;
-				classification = "Trip "+cards.get(2).getName().charAt(0)+"'s with "
-						+cards.get(3).getName().charAt(0)+cards.get(4).getName().charAt(0)+" kickers";
+				classification = "Trip "+cards.get(2).toString().charAt(0)+"'s with "
+						+cards.get(3).toString().charAt(0)+cards.get(4).toString().charAt(0)+" kickers";
 				return;
 			}else if(tripsNum == cards.get(1).getNumberValue()
 					&& tripsNum == cards.get(3).getNumberValue() ){
@@ -204,8 +204,8 @@ public class Hand implements Comparable<Hand>{
 						+ tripsNum * 13*13
 						+ cards.get(0).getNumberValue() * 13
 						+ cards.get(4).getNumberValue() ;
-				classification = "Trip "+cards.get(2).getName().charAt(0)+"'s with "
-						+cards.get(0).getName().charAt(0)+cards.get(4).getName().charAt(0)+" kickers";
+				classification = "Trip "+cards.get(2).toString().charAt(0)+"'s with "
+						+cards.get(0).toString().charAt(0)+cards.get(4).toString().charAt(0)+" kickers";
 				return;
 			}else if(tripsNum == cards.get(4).getNumberValue()){
 				//trips are in 2,3,4
@@ -213,8 +213,8 @@ public class Hand implements Comparable<Hand>{
 						+ tripsNum * 13*13
 						+ cards.get(0).getNumberValue() * 13
 						+ cards.get(1).getNumberValue() ;
-				classification = "Trip "+cards.get(2).getName().charAt(0)+"'s with "
-						+cards.get(0).getName().charAt(0)+cards.get(1).getName().charAt(0)+" kickers";
+				classification = "Trip "+cards.get(2).toString().charAt(0)+"'s with "
+						+cards.get(0).toString().charAt(0)+cards.get(1).toString().charAt(0)+" kickers";
 				return;
 			}
 			//otherwise it's not trips.
@@ -229,21 +229,21 @@ public class Hand implements Comparable<Hand>{
 				if( pair2 == cards.get(2).getNumberValue() ){
 					//kicker is last
 					rank = tmpRank + cards.get(4).getNumberValue();
-					classification = "Two Pair "+cards.get(1).getName().charAt(0)+"'s and "
-					+cards.get(3).getName().charAt(0)+"'s with "+cards.get(4).getName().charAt(0)+" kicker";
+					classification = "Two Pair "+cards.get(1).toString().charAt(0)+"'s and "
+					+cards.get(3).toString().charAt(0)+"'s with "+cards.get(4).toString().charAt(0)+" kicker";
 					return;
 				}else{
 					//kicker is middle
 					rank = tmpRank + cards.get(2).getNumberValue();
-					classification = "Two Pair "+cards.get(1).getName().charAt(0)+"'s and "
-					+cards.get(3).getName().charAt(0)+"'s with "+cards.get(2).getName().charAt(0)+" kicker";
+					classification = "Two Pair "+cards.get(1).toString().charAt(0)+"'s and "
+					+cards.get(3).toString().charAt(0)+"'s with "+cards.get(2).toString().charAt(0)+" kicker";
 					return;
 				}
 			}else{
 				//kicker is first
 				rank = tmpRank + cards.get(0).getNumberValue();
-				classification = "Two Pair "+cards.get(1).getName().charAt(0)+"'s and "
-				+cards.get(3).getName().charAt(0)+"'s with "+cards.get(0).getName().charAt(0)+" kicker";
+				classification = "Two Pair "+cards.get(1).toString().charAt(0)+"'s and "
+				+cards.get(3).toString().charAt(0)+"'s with "+cards.get(0).toString().charAt(0)+" kicker";
 				return;
 			}
 		}		
@@ -268,11 +268,11 @@ public class Hand implements Comparable<Hand>{
 				if(i!=startIndex && i!=startIndex+1){
 					kicker++;
 					tmpRank += cards.get(i).getNumberValue()*Math.pow(13,3-kicker);
-					kickers += cards.get(i).getName().charAt(0);
+					kickers += cards.get(i).toString().charAt(0);
 				}
 			}
 			rank = tmpRank;
-			classification = "Pair of "+cards.get(startIndex).getName().charAt(0)+"'s with "+kickers+" kickers";
+			classification = "Pair of "+cards.get(startIndex).toString().charAt(0)+"'s with "+kickers+" kickers";
 			return;
 		}
 		
@@ -285,11 +285,11 @@ public class Hand implements Comparable<Hand>{
 				Math.pow(2,cards.get(3).getNumberValue()) +
 				Math.pow(2,cards.get(4).getNumberValue()) );
 		classification = "High Card "
-				+cards.get(0).getName().charAt(0) + "-"
-				+cards.get(1).getName().charAt(0) + "-"
-				+cards.get(2).getName().charAt(0) + "-"
-				+cards.get(3).getName().charAt(0) + "-"
-				+cards.get(4).getName().charAt(0) ;
+				+cards.get(0).toString().charAt(0) + "-"
+				+cards.get(1).toString().charAt(0) + "-"
+				+cards.get(2).toString().charAt(0) + "-"
+				+cards.get(3).toString().charAt(0) + "-"
+				+cards.get(4).toString().charAt(0) ;
 		return;
 	}
 	

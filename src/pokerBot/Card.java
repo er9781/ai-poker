@@ -13,6 +13,10 @@ public class Card implements Comparable<Card> {
 	private final int numberValue;
 	private final int suitValue;
 	
+	//contains the string representation of the card. Used for toString(). Will be computed once 
+	//(only if the name is null)
+	private String name = null;
+	
 	public JLabel pic;
 	/**
 	 * 
@@ -20,6 +24,10 @@ public class Card implements Comparable<Card> {
 	 */
 	public Card(int num){
 		//may want validation
+		if(num < 1 || num > 52){
+			throw new IllegalArgumentException(
+					"Cards may be initialized with numbers between 1 and 52");
+		}
 		
 		//set cardNum
 		cardNum = num;
@@ -56,7 +64,7 @@ public class Card implements Comparable<Card> {
 	public int getNumberValue(){
 		return numberValue;
 	}
-	public String getName(){
+	private String getName(){
 		String name = "";
 		
 		//add number we set up 0 as two since this gives easy comparisons with %13
@@ -87,6 +95,10 @@ public class Card implements Comparable<Card> {
 		return name;
 	}
 	
+	/**
+	 * Compares the number value (2 through Ace) of the two cards.
+	 * Standard comparator function. Returns -1 for >, 1 for < and 0 for equal.
+	 */
 	public int compareTo(Card card2) {
 		if (cardNum%13 > card2.cardNum%13)
 			return -1;
@@ -105,13 +117,25 @@ public class Card implements Comparable<Card> {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString(){
-		return getName();
+		//if the name has not been set yet, then build the name string.
+		if(this.name == null){
+			this.name= this.getName();
+		}
+		
+		return this.name;
 	}
 	
 	public Card clone(){
 		return new Card(cardNum);
 	}
 	
+	/**
+	 * Two cards are equal if they represent the same underlying card (ie, 52 distinct cards).
+	 * This differs from the compareTo method which compares their number 
+	 * values (1-13 for 2 through Ace)
+	 * @param card2
+	 * @return
+	 */
 	public boolean equals(Card card2){
 		return (cardNum == card2.cardNum);
 	}
