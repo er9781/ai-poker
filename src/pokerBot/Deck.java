@@ -10,19 +10,38 @@ public class Deck {
 	
 //	public int cardsDealt = 0;
 	
+	/**
+	 * Create a new deck with all 52 cards.
+	 * The deck begins shuffled.
+	 */
 	public Deck(){
 		this(null);
 	}
 	
+	/**
+	 * Creates a new deck with all cards except those specified by excludedCards.
+	 * New decks begin shuffled.
+	 * @param excludedCards an array of cards to be excluded from the new deck
+	 */
 	public Deck(Card[] excludedCards){
-		this.excludedCards = excludedCards.clone();
+		//initialize the excludedCards field
+		if(excludedCards == null){
+			this.excludedCards = new Card[0];
+		}else{
+			this.excludedCards = excludedCards.clone();
+		}
+		
+		//get the number values for the excluded cards for use when creating the cards.
 		int[] excludedCardNums = new int[this.excludedCards.length];
 		for(int i = 0; i < this.excludedCards.length; i++){
 			excludedCardNums[i] = this.excludedCards[i].getNum();
 		}
 		Arrays.sort(excludedCardNums);
-		cards = new Card[52 - (this.excludedCards==null ? 0 : this.excludedCards.length)];
 		
+		//create the cards array
+		cards = new Card[52 - this.excludedCards.length];
+		
+		//loop through the deck and set the cards to be the next non-excluded card.
 		int numExcluded = 0;
 		for(int i = 0; i < 52 ; i++ ){
 			//if the card is in the excluded list, then skip over the current card.
@@ -35,7 +54,7 @@ public class Deck {
 		}
 		
 		//start with the deck shuffled
-		shuffle();
+		this.shuffle();
 	}
 	
 //	public Card getTopCard(){
@@ -43,10 +62,18 @@ public class Deck {
 //		return cards[cardsDealt-1];
 //	}
 	
-	public Card getCard(int i){
-		return cards[i];
+	/**
+	 * Returns the card at the given index.
+	 * @param index
+	 * @return
+	 */
+	public Card getCard(int index){
+		return cards[index];
 	}
 	
+	/**
+	 * Shuffles the deck.
+	 */
 	public void shuffle(){
 		for(int i=0;i<cards.length;i++){
 			//choose random integer from current spot to the end
