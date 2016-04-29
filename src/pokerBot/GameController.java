@@ -19,6 +19,12 @@ public class GameController implements Runnable {
 	private Deck deck = new Deck();
 	private ArrayList<Card> board = new ArrayList<Card>(5);
 	
+	/*
+	 * Define constants and controller tracking variables.
+	 * 
+	 * We expose available constants generally through getter functions. 
+	 * The blinds are globally available as they are constants across the entire game.
+	 */
 	final int smallBlind = 1;
 	final int bigBlind = 2;
 	private int dealer = 0;
@@ -26,7 +32,7 @@ public class GameController implements Runnable {
 	private ArrayList<Player> remainingPlayers;
 	private ArrayList<Integer> bets;
 	private int currentBet = 0;
-	private int previousBet = 0;
+	private int previousBet = 0;//to track minimum next bet
 
 	private boolean endRound = false;
 	
@@ -258,7 +264,7 @@ public class GameController implements Runnable {
 				}
 			}else{
 				//player has made a bet. first check to see if it's valid
-				if(bets.get((actingPlayer -1 + remainingPlayers.size())%remainingPlayers.size()) > response  
+				if(bets.get((actingPlayer - 1 + remainingPlayers.size())%remainingPlayers.size()) > response  
 						||  response < -1
 						||  response > remainingPlayers.get(actingPlayer).stack  
 						||  response < bigBlind
@@ -336,9 +342,13 @@ public class GameController implements Runnable {
 		return tmp;
 	}
 	public String getPlayerName(int index){
-		try{
-			return players.get(index).name;
-		}catch(Exception e){return "";}
+		//check if index is within bounds.
+		if( index > players.size() ){
+			throw new IllegalArgumentException(
+					"You asked for a player index larger than the number of players");
+		}
+		
+		return players.get(index).name;
 	}
 	public int getCurrentBet(){
 		return currentBet;
@@ -346,6 +356,8 @@ public class GameController implements Runnable {
 	public int getPreviousBet() {
 		return previousBet;
 	}
+	
+
 	
 	GUI gui;
 	static GameController gameController;

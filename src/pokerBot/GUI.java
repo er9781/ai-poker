@@ -235,6 +235,7 @@ public class GUI extends JFrame {
 	
 	private class pokerResponseListener implements ActionListener{
 		public void actionPerformed(ActionEvent event) {
+			//TODO change actions to an object return for better OOP design. 
 			if(event.getSource().equals(callButton)){
 				//call actions
 				curPlayer.response = game.getCurrentBet();
