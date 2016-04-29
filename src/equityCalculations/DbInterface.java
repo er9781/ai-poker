@@ -56,15 +56,15 @@ public class DbInterface {
 		//assemble hand name strings with cards in ascending order of cardNum
 		String heroHandName;
 		if(heroHand[0].getNum() < heroHand[1].getNum())
-			heroHandName = heroHand[0].getName()+heroHand[1].getName();
+			heroHandName = heroHand[0].toString()+heroHand[1].toString();
 		else
-			heroHandName = heroHand[1].getName()+heroHand[0].getName();
+			heroHandName = heroHand[1].toString()+heroHand[0].toString();
 		
 		String villainHandName;
 		if(villainHand[0].getNum() < villainHand[1].getNum())
-			villainHandName = villainHand[0].getName()+villainHand[1].getName();
+			villainHandName = villainHand[0].toString()+villainHand[1].toString();
 		else
-			villainHandName = villainHand[1].getName()+villainHand[0].getName();
+			villainHandName = villainHand[1].toString()+villainHand[0].toString();
 		
 		EquityBreakdown equityResult = null;
 		
